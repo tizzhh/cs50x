@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            // TODO: Add code to check answers to questions
+            document.addEventListener("DOMContentLoaded", function() {
+                let buttons = document.querySelectorAll('.button');
+                buttons.forEach(function (button) {
+                    button.addEventListener('click', function()
+                    {
+                        if (button.id == "b3")
+                        {
+                            button.style.backgroundColor = 'green';
+                            document.querySelector('#Try_again').innerHTML = "Correct!";
+                        }
+                        else
+                        {
+                            button.style.backgroundColor = 'red';
+                            document.querySelector('#Try_again').innerHTML = "Incorrect!";
+                        }
+                    })
+                })
+                document.querySelector('#b5').addEventListener('click', function()
+                {
+                    let box = document.querySelector('#input');
+                    if (box.value == "1879")
+                    {
+                        box.style.backgroundColor = 'green';
+                        document.querySelector('#Try_again1').innerHTML = "Correct!";
+                    }
+                    else
+                    {
+                        box.style.backgroundColor = 'red';
+                        document.querySelector('#Try_again1').innerHTML = "Inorrect!";
+                    }
+                })
+            });
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <!-- TODO: Add multiple choice question here -->
+                <h3><b>What's the approximate US population?</b></h3>
+                <button class="button" id="b1">1 Million</button>
+                <button class="button" id="b2">200 Million</button>
+                <button class="button" id="b3">300 Million</button>
+                <button class="button" id="b4">400 Million</button>
+                <p id="Try_again"></p>
+            </div>
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here -->
+                <h3><b>In what year was Einstein born?</b></h3>
+                <input id="input" type="text">
+                <button id="b5">Check answer</button>
+                <p id="Try_again1"></p>
+            </div>
+        </div>
+    </body>
+</html>

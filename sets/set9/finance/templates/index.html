@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+<table>
+    <thead>
+        <tr>
+            <th>Symbol</th>
+            <th>Shares</th>
+            <th>Price</th>
+            <th>TOTAL</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for stock in stocks %}
+            <tr>
+                <td>{{ stock["symbol"] }}</td>
+                <td>{{ stock["shares"] }}</td>
+                <td>{{ stock["price"] | usd }}</td>
+                <td>{{ stock["TOTAL"] | usd}}</td>
+                <td><form action="/sell_in_index" method="post">
+                    <input name="shares2" type="hidden" value="{{ stock["shares"] }}">
+                    <input name="symbol2" type="hidden" value="{{ stock["symbol"] }}">
+                    <input autocomplete="off" class="form-control mx-auto w-auto" name="shares_sell" placeholder="Shares" type="text">
+                    <button class="btn btn-primary" type="submit">Sell</button>
+                </form>
+                </td>
+                <td>
+                <form action="/buy_in_index" method="post">
+                    <input name="shares2" type="hidden" value="{{ stock["shares"] }}">
+                    <input name="symbol2" type="hidden" value="{{ stock["symbol"] }}">
+                    <input autocomplete="off" class="form-control mx-auto w-auto" name="shares_buy" placeholder="Shares" type="text">
+                    <button class="btn btn-primary" type="submit">Buy</button>
+                </form>
+                </td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <td></td>
+            <td></td>
+            <td><b>Cash</b></td>
+            <td>{{ cash | usd }}</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td><b>TOTAL</b></td>
+            <td>{{ summ | usd }}</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

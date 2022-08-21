@@ -1,0 +1,11 @@
+sort1 uses: Bubble sort
+
+How do you know?: sort1 sorted the sorted50000.txt file faster than sort3. Ω of bubble is Ω(n)
+
+sort2 uses: Merge sort
+
+How do you know?: Fastest time of sorting random50000.txt.
+
+sort3 uses: Selection sort
+
+How do you know?: sort3 sorted the sorted50000.txt file slower than sort1. Ω of selection is Ω(n^2)
